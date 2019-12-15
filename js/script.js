@@ -94,8 +94,8 @@ function generateTags() {
 
     /* START LOOP: for each tag */
     for (let tag of articleTagsArray) {
-      let linkhtml = '<li><a href="#tag-' + tag + "</a></li>";
-      html = html + linkhtml;
+      let linkhtml = '<li><a href="#tag-' + tag + '">' + tag + "</a></li> ";
+      html = linkhtml + html;
     }
 
     tagsWrapper.innerHTML = html;
