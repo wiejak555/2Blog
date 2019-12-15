@@ -94,12 +94,11 @@ function generateTags() {
 
     /* START LOOP: for each tag */
     for (let tag of articleTagsArray) {
-      const linkhtml = '<li><a href="#tag-' + tag + "</a></li>";
-      html = linkhtml + html;
+      let linkhtml = '<li><a href="#tag-' + tag + "</a></li>";
+      html = html + linkhtml;
     }
 
-    const wrapList = document.querySelector(optArticleTagsSelector);
-    wrapList.innerHTML = html;
+    tagsWrapper.innerHTML = html;
     console.log(html);
   }
 
