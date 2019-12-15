@@ -86,7 +86,6 @@ function generateTags() {
 
     const articleTagsArray = articleTags.split(" ");
 
-
     /* make html variable with empty string */
 
     /* get tags from data-tags attribute */
@@ -95,13 +94,13 @@ function generateTags() {
 
     /* START LOOP: for each tag */
     for (let tag of articleTagsArray) {
-      const html = '<li><a href="#tag-' +
-        articleTagsArray +
-        "</a></li>";
-      console.log(html);
+      const html = '<li><a href="#tag-' + tag + "</a></li>";
     }
 
+    const wrapList = document.querySelector(optArticleTagsSelector);
+    wrapList.innerHTML = html;
   }
+
   /* generate HTML of the link */
 
   /* add generated code to html variable */
