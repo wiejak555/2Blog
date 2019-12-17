@@ -165,3 +165,34 @@ function addClickListenersToTags() {
 }
 
 addClickListenersToTags();
+
+function generateAuthors() {
+  /* find all articles */
+  const articles = document.querySelectorAll(optArticleSelector);
+  /* START LOOP: for every article: */
+
+  for (let article of articles) {
+    /* find tags wrapper */
+    const authorWrapper = article.querySelector(".post-author");
+    let html = "";
+    const dataAuthors = article.getAttribute("data-author");
+
+    /* make html variable with empty string */
+    /* get tags from data-tags attribute */
+    for (let name of dataAuthors) {
+      let linkhtml = '<a href="#tag-' + name + '">' + name + "</a> ";
+      html = linkhtml + html;
+    }
+
+    authorWrapper.innerHTML = html;
+    /* split tags into array */
+    /* START LOOP: for each tag */
+
+    /* generate HTML of the link */
+    /* add generated code to html variable */
+    /* END LOOP: for each tag */
+    /* insert HTML of all the links into the tags wrapper */
+    /* END LOOP: for every article: */
+  }
+}
+generateAuthors();
