@@ -175,14 +175,13 @@ function generateAuthors() {
     /* find tags wrapper */
     const authorWrapper = article.querySelector(".post-author");
     let html = "";
-    const dataAuthors = article.getAttribute("data-author");
+    const dataAuthor = article.getAttribute("data-author");
 
     /* make html variable with empty string */
     /* get tags from data-tags attribute */
-    for (let name of dataAuthors) {
-      let linkhtml = '<a href="#tag-' + name + '">' + name + "</a> ";
-      html = linkhtml + html;
-    }
+
+    let linkHtml = '<a href="#tag-' + dataAuthor + '">' + dataAuthor + "</a> ";
+    html += linkHtml;
 
     authorWrapper.innerHTML = html;
     /* split tags into array */
