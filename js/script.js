@@ -51,13 +51,16 @@ function generateTitleLinks(customSelector = " ") {
 function generateTags() {
   const cloudWapper = document.querySelector(optTagsListSelector);
   const articles = document.querySelectorAll(optArticleSelector);
+  const allTags = {};
 
   for (let article of articles) {
     const tagsWrapper = article.querySelector(optArticleTagsSelector);
     let html = "";
+    let htmlCloud = "";
+
     const articleTags = article.getAttribute("data-tags");
     const articleTagsArray = articleTags.split(" ");
-    let allTags = {};
+
     for (let tag of articleTagsArray) {
       if (!allTags.hasOwnProperty(tag)) {
         allTags[tag] = 1;
@@ -67,9 +70,18 @@ function generateTags() {
       console.log(allTags);
       let linkhtml = '<li><a href="#tag-' + tag + '">' + tag + "</a></li> ";
       html = linkhtml + html;
+      let linkCloudHtml =
+        '<li><a href="#tag-' +
+        tag +
+        '">' +
+        tag +
+        " " +
+        allTags[tag] +
+        "</a></li> ";
+      htmlCloud = linkCloudHtml + htmlCloud;
     }
     tagsWrapper.innerHTML = html;
-    cloudWapper.innerHTML = html;
+    cloudWapper.innerHTML = htmlCloud;
   }
 }
 
