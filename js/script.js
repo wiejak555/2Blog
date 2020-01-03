@@ -14,6 +14,10 @@ const templates2 = {
   articleTags: Handlebars.compile(document.querySelector('#template-article-tags').innerHTML)
 };
 
+const templates3 = {
+  articleTags: Handlebars.compile(document.querySelector('#template-right-tags').innerHTML)
+};
+
 function titleClickHandler(event) {
   event.preventDefault();
   const activeLinks = document.querySelectorAll('.titles a.active');
@@ -76,8 +80,12 @@ function generateTags() {
       let linkHTMLData = { id: tag, title: tag };
       let linkHTML = templates2.articleTags(linkHTMLData);
 
-      let linkCloudHtml = '<li><a href="#tag-' + tag + '">' + tag + ' ' + allTags[tag] + '</a></li> ';
-      htmlCloud = linkCloudHtml + htmlCloud;
+      //let linkCloudHtml = '<li><a href="#tag-' + tag + '">' + tag + ' ' + allTags[tag] + '</a></li> ';
+
+      let linkTagsData = { id: tag, title: allTags };
+      let htmlCloud = templates3.articleTags(linkTagsData);
+
+      htmlCloud = linkHTML + htmlCloud;
       html = linkHTML + html;
     }
 
