@@ -42,6 +42,7 @@ function generateTitleLinks(customSelector = ' ') {
     const linkHTMLData = { id: articleId, title: articleTitle };
     const linkHTML = templates.articleLink(linkHTMLData);
     html = html + linkHTML;
+
     titleList.innerHTML = titleList.innerHTML + linkHTML;
   }
   const links = document.querySelectorAll('.titles a');
@@ -72,15 +73,15 @@ function generateTags() {
     }
 
     for (let tag in allTags) {
-      const linkHTMLData = { id: tag, title: tag };
-      const linkHTML = templates2.articleTags(linkHTMLData);
+      let linkHTMLData = { id: tag, title: tag };
+      let linkHTML = templates2.articleTags(linkHTMLData);
 
-      console.log(linkHTML);
       let linkCloudHtml = '<li><a href="#tag-' + tag + '">' + tag + ' ' + allTags[tag] + '</a></li> ';
       htmlCloud = linkCloudHtml + htmlCloud;
+      html = linkHTML + html;
     }
 
-    tagsWrapper.innerHTML = linkHTML;
+    tagsWrapper.innerHTML = html;
     cloudWapper.innerHTML = htmlCloud;
   }
 }
