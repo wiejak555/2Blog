@@ -90,8 +90,10 @@ function tagClickHandler(event) {
   event.preventDefault();
   const clickedElement = this;
   const href = clickedElement.getAttribute('href');
-  const tag = href.replace('#tag-', '');
-  const activeTagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
+  console.log(href);
+  const tag = href.replace('#', '');
+  console.log(tag);
+  const activeTagLinks = document.querySelectorAll('a.active[href^="#"]');
   for (let activeTagLink of activeTagLinks) {
     activeTagLink.classList.remove('active');
   }
