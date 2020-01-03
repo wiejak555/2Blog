@@ -67,7 +67,9 @@ function generateTags() {
       } else {
         allTags[tag]++;
       }
-      console.log(allTags);
+    }
+
+    for (let tag in allTags) {
       let linkhtml = '<li><a href="#tag-' + tag + '">' + tag + "</a></li> ";
       html = linkhtml + html;
       let linkCloudHtml =
