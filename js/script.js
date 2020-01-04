@@ -79,17 +79,13 @@ function generateTags() {
     for (let tag in allTags) {
       let linkHTMLData = { id: tag, title: tag };
       let linkHTML = templates2.articleTags(linkHTMLData);
-      html = linkHTML + html;
-
-      //let linkCloudHtml = '<li><a href="#tag-' + tag + '">' + tag + ' ' + allTags[tag] + '</a></li> ';
-
-      let linkTagsData = { id: tag, title: tag + allTags[tag] };
+      let linkTagsData = { id: tag, title: tag + ' ' + '(' + allTags[tag] + ')' };
       let htmlCloudData = templates3.articleTags(linkTagsData);
       htmlCloud = htmlCloudData + htmlCloud;
+      html = linkHTML + html;
     }
 
     tagsWrapper.innerHTML = html;
-
     cloudWapper.innerHTML = htmlCloud;
   }
 }
