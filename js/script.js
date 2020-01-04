@@ -84,14 +84,13 @@ function generateTags() {
 
       let linkTagsData = { id: tag, title: tag + allTags[tag] };
       let htmlCloud = templates3.articleTags(linkTagsData);
-      console.log(linkTagsData);
+
       htmlCloud = linkHTML + htmlCloud;
       html = linkHTML + html;
     }
 
     tagsWrapper.innerHTML = html;
     cloudWapper.innerHTML = htmlCloud;
-    console.log(htmlCloud);
   }
 }
 
