@@ -79,17 +79,17 @@ function generateTags() {
     for (let tag in allTags) {
       let linkHTMLData = { id: tag, title: tag };
       let linkHTML = templates2.articleTags(linkHTMLData);
+      html = linkHTML + html;
 
       //let linkCloudHtml = '<li><a href="#tag-' + tag + '">' + tag + ' ' + allTags[tag] + '</a></li> ';
 
       let linkTagsData = { id: tag, title: tag + allTags[tag] };
-      let htmlCloud = templates3.articleTags(linkTagsData);
-
-      htmlCloud = linkHTML + htmlCloud;
-      html = linkHTML + html;
+      let htmlCloudData = templates3.articleTags(linkTagsData);
+      htmlCloud = htmlCloudData + htmlCloud;
     }
 
     tagsWrapper.innerHTML = html;
+
     cloudWapper.innerHTML = htmlCloud;
   }
 }
@@ -98,9 +98,9 @@ function tagClickHandler(event) {
   event.preventDefault();
   const clickedElement = this;
   const href = clickedElement.getAttribute('href');
-  console.log(href);
+
   const tag = href.replace('#', '');
-  console.log(tag);
+
   const activeTagLinks = document.querySelectorAll('a.active[href^="#"]');
   for (let activeTagLink of activeTagLinks) {
     activeTagLink.classList.remove('active');
