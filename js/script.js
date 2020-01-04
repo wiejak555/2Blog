@@ -4,7 +4,8 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
-  optTagsListSelector = '.tags.list';
+  optTagsListSelector = '.tags.list',
+  optAuthorListSelector = '.authors.list';
 
 const templates = {
   articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML)
@@ -102,6 +103,7 @@ function tagClickHandler(event) {
   const tag = href.replace('#', '');
 
   const activeTagLinks = document.querySelectorAll('a.active[href^="#"]');
+  console.log(activeTagLinks);
   for (let activeTagLink of activeTagLinks) {
     activeTagLink.classList.remove('active');
   }
@@ -121,14 +123,18 @@ function addClickListenersToTags() {
 
 function generateAuthors() {
   const articles = document.querySelectorAll(optArticleSelector);
+  const authorTagWrapper = document.querySelectorAll(optAuthorListSelector);
+
   for (let article of articles) {
     const authorWrapper = article.querySelector('.post-author');
+
     let html = '';
     const dataAuthor = article.getAttribute('data-author');
     let linkHTMLData = { id: dataAuthor, title: dataAuthor };
     let linkHTML = templates2.articleTags(linkHTMLData);
     html += linkHTML;
     authorWrapper.innerHTML = html;
+    authorTagWrapper.innerHTML = html;
   }
 }
 
