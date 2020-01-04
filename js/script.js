@@ -18,6 +18,10 @@ const templates3 = {
   articleTags: Handlebars.compile(document.querySelector('#template-right-tags').innerHTML)
 };
 
+const templates4 = {
+  articleTags: Handlebars.compile(document.querySelector('#template-author-tags').innerHTML)
+};
+
 function titleClickHandler(event) {
   event.preventDefault();
   const activeLinks = document.querySelectorAll('.titles a.active');
@@ -121,8 +125,9 @@ function generateAuthors() {
     const authorWrapper = article.querySelector('.post-author');
     let html = '';
     const dataAuthor = article.getAttribute('data-author');
-    let linkHtml = '<a href="#tag-' + dataAuthor + '">' + dataAuthor + '</a> ';
-    html += linkHtml;
+    let linkHTMLData = { id: dataAuthor, title: dataAuthor };
+    let linkHTML = templates2.articleTags(linkHTMLData);
+    html += linkHTML;
     authorWrapper.innerHTML = html;
   }
 }
@@ -131,8 +136,8 @@ function authorClickHandler(event) {
   event.preventDefault();
   const clickedElement = this;
   const href = clickedElement.getAttribute('href');
-  const tag = href.replace('#tag-', '');
-  const activeTagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
+  const tag = href.replace('#', '');
+  const activeTagLinks = document.querySelectorAll('a.active[href^="#"]');
   for (let activeTagLink of activeTagLinks) {
     activeTagLink.classList.remove('active');
   }
